@@ -1,4 +1,5 @@
 from flask import Flask, jsonify, request
+from flask_cors import CORS
 import joblib
 import numpy as np
 # สร้างแอป Flask
@@ -7,6 +8,7 @@ app = Flask(__name__)
 knn = joblib.load('knn_model.pkl')
 svm = joblib.load('svm_model.pkl')
 # สร้าง route สำหรับ API
+CORS(app,origins="*")
 @app.route('/')
 def hello_world():
     return jsonify(message=[0,1,2,3])
