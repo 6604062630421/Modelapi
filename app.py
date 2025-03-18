@@ -8,9 +8,10 @@ import io
 from PIL import Image
 import base64
 from io import BytesIO
+import tensorflow as tf
 # สร้างแอป Flask
 app = Flask(__name__)
-
+tf.config.set_visible_devices([], 'GPU')
 knn = joblib.load('knn_model.pkl')
 svm = joblib.load('svm_model.pkl')
 nn = load_model('best_model.h5')
